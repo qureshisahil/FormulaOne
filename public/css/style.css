@@ -1,4 +1,21 @@
-/* Add to public/css/style.css */
+/* public/css/style.css */
+body {
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #15151e;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #e10600;
+}
+
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -14,6 +31,7 @@
     color: #fff;
     border: 1px solid #555;
     border-radius: 5px;
+    margin-right: 10px;
 }
 
 #year-selector-form button {
@@ -23,4 +41,70 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.driver-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.driver-card {
+    background-color: #1f1f2a;
+    border: 1px solid #38383f;
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.driver-card:hover {
+    transform: translateY(-5px);
+    border-color: #e10600;
+}
+
+.driver-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.driver-card-header .driver-info {
+    flex-grow: 1;
+}
+
+.driver-card-header .driver-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+}
+
+.driver-card-header .driver-info p {
+    margin: 0;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.driver-card-header .driver-position {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.driver-card-stats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.driver-card-stats .stat h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.5em;
+    color: #e10600;
+}
+
+.driver-card-stats .stat p {
+    margin: 0;
+    font-size: 0.8em;
+    color: #aaa;
+    text-transform: uppercase;
 }
