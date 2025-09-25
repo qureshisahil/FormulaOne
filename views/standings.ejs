@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+
+<main>
+    <div class="header-container">
+        <h1><%= year %> Driver Standings</h1>
+        
+        <form action="/" method="get" id="year-selector-form">
+            <select name="year" id="year-select">
+                <% seasons.forEach(season => { %>
+                    <option value="<%= season %>" <%= season == year ? 'selected' : '' %>>
+                        <%= season %>
+                    </option>
+                <% }) %>
+            </select>
+            <button type="submit">Go</button>
+        </form>
+    </div>
+
+    <div class="driver-grid">
+        <% if (standings.length > 0) { %>
+            <% standings.forEach(standing => { %>
+                <div class="driver-card">
+                    <div class="driver-card-header">
+                        <div class="driver-info">
+                            <h4><%= standing.Driver.givenName %> <%= standing.Driver.familyName %></h4>
+                            <p><%= standing.Constructors[0].name %></p>
+                        </div>
+                        <div class="driver-position">
+                            <%= standing.position %>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="driver-card-stats">
+                        <div class="stat">
+                            <h3><%= standing.points %></h3>
+                            <p>Points</p>
+                        </div>
+                        <div class="stat">
+                            <h3><%= standing.wins %></h3>
+                            <p>Wins</p>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No standings data available for the selected year.</p>
+        <% } %>
+    </div>
+</main>
+
+<script>
+    // This script will automatically change the URL when a new year is selected
+    // It makes the "Go" button unnecessary but we'll keep it for now.
+    // A better user experience is to submit the form on change.
+    document.getElementById('year-select').addEventListener('change', function() {
+        // Construct the new URL and navigate to it
+        window.location.href = '/' + this.value;
+    });
+</script>
+
+<%- include('partials/footer') %>
